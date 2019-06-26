@@ -139,10 +139,10 @@ body {
 .link:visited {
   color: #968B87; }
 
-.loader {
+.spinner {
   margin: 5rem auto;
   text-align: center; }
-  .loader svg {
+  .spinner svg {
     height: 5.5rem;
     width: 5.5rem;
     fill: #F59A83;
