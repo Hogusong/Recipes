@@ -1,3 +1,5 @@
+import { Fraction } from 'fractional';
+
 export const dom = {
   searchField: document.querySelector('.search__field'),
   searchBtn: document.querySelector('.search__btn'),
@@ -32,3 +34,20 @@ export const limitLength = (title, limit=20) => {
   }
   return str;
 }
+
+export const formatCount = no => {
+  if (no) {
+    // keep upto 2 decimal point
+    no = Math.round(no * 100) / 100;
+
+    // seperate it into integer and decimal 
+    // 3.25 => ['3', '25'],  3 => ['3'],   0.25 => ['0', '25']
+    const [inc, dec] = no.toString().split('.');
+
+    if (!dec) return inc;
+    
+    const fr = new Fraction(no - +inc);
+    const fact = fr.numerator + '/' + fr.denominator;
+    return (inc != '0') ? inc + ' ' + fact : fact ;
+  }
+};

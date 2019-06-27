@@ -1,4 +1,4 @@
-import { dom } from '../models/base';
+import { dom, formatCount } from '../models/base';
 
 export const clearRecipe = () => dom.recipeUI.innerHTML = '';
 
@@ -85,7 +85,7 @@ const renderIngredients = ingredients => {
           <svg class="recipe__icon">
             <use href="img/icons.svg#icon-check"></use>
           </svg>
-          <div class="recipe__count">${ing.count}</div>
+          <div class="recipe__count">${formatCount(ing.count)}</div>
           <div class="recipe__ingredient">
             <span class="recipe__unit">${ing.unit}</span>
             ${ing.ingredient}
