@@ -5,11 +5,11 @@ export default class List {
     this.items = [];
   }
 
-  addItem(count, unit, ingredient) {
+  addItem(count, unit, ingredient, step) {
     const index = this.items.findIndex(el => el.ingredient === ingredient)
     if (index < 0) {
-      this.items.push({ id: uniqid(),  count,  unit,  ingredient })
-    } else this.items[index].count += item.count 
+      this.items.push({ id: uniqid(),  count,  unit,  ingredient,  step })
+    } else this.items[index].count += count 
   }
 
   deleteItem(id) {

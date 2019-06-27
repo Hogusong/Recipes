@@ -6,7 +6,8 @@ export const dom = {
   recipesList: document.querySelector('.results__list'),
   resultsBrowser: document.querySelector('.results'),
   pagination: document.querySelector('.results__pages'),
-  recipeUI: document.querySelector('.recipe')
+  recipeUI: document.querySelector('.recipe'),
+  shoppingList: document.querySelector('.shopping__list')
 }
 
 export const renderSpinner = parent => {
