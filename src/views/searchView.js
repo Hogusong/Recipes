@@ -1,4 +1,4 @@
-import { dom } from '../models/base';
+import { dom, limitLength } from '../models/base';
 
 export const getInput = () => {
   let query = dom.searchField.value;
@@ -25,14 +25,15 @@ export const renderRecipes = (recipes, page, perPage) => {
 }
 
 function renderRecipe(recipe) {
+  const title = limitLength(recipe.title, 20);
   const markup = `
     <li>
       <a class="results__link results__link" href="#${recipe.recipe_id}">
         <figure class="results__fig">
-          <img src="${recipe.image_url}" alt="${recipe.title}">
+          <img src="${recipe.image_url}" alt="${title}">
         </figure>
         <div class="results__data">
-          <h4 class="results__name">${recipe.title}</h4>
+          <h4 class="results__name">${title}</h4>
           <p class="results__author">${recipe.publisher}</p>
         </div>
       </a>
