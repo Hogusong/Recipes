@@ -1,7 +1,8 @@
 import { dom } from '../models/base';
 
+export const clearRecipe = () => dom.recipeUI.innerHTML = '';
+
 export const renderRecipe = (recipe) => {
-  console.log(recipe);
   const markup = `
     <figure class="recipe__fig">
       <img src="${recipe.img}" alt="${recipe.title}" class="recipe__img">

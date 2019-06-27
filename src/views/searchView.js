@@ -12,6 +12,14 @@ export const clearRecipesUI = () => {
   dom.pagination.innerHTML = '';
 }
 
+export const highlightSelected = id => {
+  document.querySelectorAll('.results__link').forEach(el => {
+    el.classList.remove('results__link--active');
+  })
+  const el = document.querySelector(`.results__link[href*="#${id}"]`);
+  if (el) el.classList.add('results__link--active');
+}
+
 export const renderRecipes = (recipes, page, perPage) => {
   // clear before render the recipes list.
   clearRecipesUI();
@@ -28,7 +36,7 @@ function renderRecipe(recipe) {
   const title = limitLength(recipe.title, 20);
   const markup = `
     <li>
-      <a class="results__link results__link" href="#${recipe.recipe_id}">
+      <a class="results__link" href="#${recipe.recipe_id}">
         <figure class="results__fig">
           <img src="${recipe.image_url}" alt="${title}">
         </figure>

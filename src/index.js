@@ -56,9 +56,15 @@ const controlRecipe = async () => {
   const id = window.location.hash.replace('#', '');
 
   if (id) {
+    // prepare UI to show a selected recipe
+    recipeView.clearRecipe();
+
     // create new recipe object
     state.recipe = new Recipe(id);
     renderSpinner(dom.recipeUI);
+
+    // highlight selected recipe in the list view
+    searchView.highlightSelected(id);
 
     try {
       // get recipe data
