@@ -96,4 +96,11 @@ const renderIngredients = ingredients => {
   return markup
 }
 
-const renderUpdateServings = recipe => {}
+export const renderUpdateServings = recipe => {
+  // update servings
+  document.querySelector('.recipe__info-data--people').textContent = recipe.servings;
+  // update ingredients
+  document.querySelectorAll('.recipe__count').forEach((el, i) => {
+    el.textContent = formatCount(recipe.ingredients[i].count);
+  });
+}

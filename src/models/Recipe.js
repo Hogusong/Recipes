@@ -77,5 +77,14 @@ export default class Recipe {
     return newIngredients;
   }
 
-  updateServings(type) {}
+  updateServings(type) {
+    const prevServings = this.servings;
+    if (type === 'minus' && this.servings > 1) this.servings --;
+    if (type === 'plus') this.servings ++;
+    if (prevServings != this.servings) {
+      this.ingredients.forEach(ing => {
+        ing.count = this.servings * ing.count / prevServings
+      })
+    }
+  }
 }
