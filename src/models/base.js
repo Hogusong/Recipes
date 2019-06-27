@@ -3,7 +3,8 @@ export const dom = {
   searchBtn: document.querySelector('.search__btn'),
   recipesList: document.querySelector('.results__list'),
   resultsBrowser: document.querySelector('.results'),
-  pagination: document.querySelector('.results__pages')
+  pagination: document.querySelector('.results__pages'),
+  recipeUI: document.querySelector('.recipe')
 }
 
 export const renderSpinner = parent => {

@@ -1,6 +1,8 @@
 import Search from './models/Search';
+import Recipe from './models/Recipe';
 import { dom, renderSpinner, clearSpinner  } from './models/base';
 import * as searchView from './views/searchView';
+import * as recipeView from './views/recipeView';
 
 const state = {
   perPage: 9
@@ -47,3 +49,30 @@ dom.pagination.addEventListener('click', e=> {
     searchView.renderRecipes(state.search.recipes, state.page, state.perPage);
   }
 });
+
+// set controller to handle the detail of a selected recipe.
+const controlRecipe = async () => {
+  // get id from url
+  const id = window.location.hash.replace('#', '');
+
+  if (id) {
+    // create new recipe object
+    state.recipe = new Recipe(id);
+    renderSpinner(dom.recipeUI);
+
+    try {
+      // get recipe data
+      await state.recipe.getRecipe();
+
+      // render recipe
+      clearSpinner();
+      recipeView.renderRecipe(state.recipe);
+    } catch (err) {
+      alert(err);
+    }
+  }
+
+};
+
+// add event for 'hashchange'
+window.addEventListener('hashchange', controlRecipe);
