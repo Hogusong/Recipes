@@ -9,14 +9,16 @@ export const getInput = () => {
 
 export const clearRecipesUI = () => {
   dom.recipesList.innerHTML = '';
+  dom.pagination.innerHTML = '';
 }
 
 export const renderRecipes = (recipes, page, perPage) => {
+  // clear before render the recipes list.
+  clearRecipesUI();
   // render recipes on left side of the browser.
   const len = recipes.length;
   const start = perPage * (page - 1);
   const end = start + perPage >= len ? len : start + perPage;
-  if (end >= recipes.length) end = recipes.length;
   for (let i = start; i < end; i++) renderRecipe(recipes[i])
 
   renderPagination(page, len, perPage);

@@ -32,7 +32,18 @@ const controlSearch = async () => {
   }
 };
 
+// add event to search button
 dom.searchBtn.addEventListener('click', e => {
   e.preventDefault();
   controlSearch();
 })
+
+// add event to pagination buttons
+dom.pagination.addEventListener('click', e=> {
+  // set button as event target for all near selection.
+  const btn = e.target.closest('.btn-inline');
+  if (btn) {
+    state.page = +btn.dataset.goto;
+    searchView.renderRecipes(state.search.recipes, state.page, state.perPage);
+  }
+});
