@@ -76,4 +76,6 @@ export default class Recipe {
     });
     return newIngredients;
   }
+
+  updateServings(type) {}
 }

@@ -45,7 +45,7 @@ export const formatCount = no => {
     const [inc, dec] = no.toString().split('.');
 
     if (!dec) return inc;
-    
+
     const fr = new Fraction(no - +inc);
     const fact = fr.numerator + '/' + fr.denominator;
     return (inc != '0') ? inc + ' ' + fact : fact ;
