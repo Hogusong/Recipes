@@ -112,3 +112,19 @@ dom.recipeUI.addEventListener('click', e => {
   }
   recipeView.renderUpdateServings(state.recipe);
 })
+
+// add all event listeners which are needed  in Shoping List UI.
+dom.shoppingList.addEventListener('click', e => {
+  const id = e.target.closest('.shopping__item').dataset.id;
+  if (e.target.matches('.shopping__delete, .shopping__delete *')) {
+    // delete from state.list
+    state.list.deleteItem(id);
+    // remove item from UI
+    listView.removeItem(id);
+  } else if (e.target.matches('.shopping__count-value')) {
+    // update new count to the shopping list.
+    const val = parseFloat(e.target.value);
+    if (val < 0) e.target.value = 0;
+    else state.list.updateCount(id, val);
+  }
+})

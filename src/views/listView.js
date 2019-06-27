@@ -5,9 +5,9 @@ export const renderShoppingList = items => {
   let markup = '';
   items.forEach(item => {
     markup += `
-      <li class="shopping__item">
+      <li class="shopping__item" data-id="${item.id}">
         <div class="shopping__count">
-          <input type="number" value="${item.count}" step="${item.step}">
+          <input type="number" value="${item.count}" step="${item.step}" class="shopping__count-value">
           <p>${item.unit}</p>
         </div>
         <p class="shopping__description">${item.ingredient}</p>
@@ -21,3 +21,8 @@ export const renderShoppingList = items => {
   });
   dom.shoppingList.insertAdjacentHTML('beforeend', markup);
 };
+
+export const removeItem = id => {
+  const el = document.querySelector(`[data-id="${id}"]`);
+  if (el) el.parentElement.removeChild(el);
+}
