@@ -40,7 +40,7 @@ export default class Recipe {
 
       // replace all units to standard format.
       Object.keys(units).forEach(u => {
-        ingredient = ingredient.replace(u, unit[u]);
+        ingredient = ingredient.replace(u, units[u]);
       });
 
       // remove all inside parentheses including parentheses
