@@ -64,6 +64,8 @@ const controlRecipe = async () => {
       // get recipe data
       await state.recipe.getRecipe();
 
+      state.recipe.calcTime();
+      state.recipe.calcServings();
       // render recipe
       clearSpinner();
       recipeView.renderRecipe(state.recipe);
