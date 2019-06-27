@@ -2,7 +2,8 @@ export const dom = {
   searchField: document.querySelector('.search__field'),
   searchBtn: document.querySelector('.search__btn'),
   recipesList: document.querySelector('.results__list'),
-  resultsBrowser: document.querySelector('.results')
+  resultsBrowser: document.querySelector('.results'),
+  pagination: document.querySelector('.results__pages')
 }
 
 export const renderSpinner = parent => {
