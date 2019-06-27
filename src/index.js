@@ -82,5 +82,23 @@ const controlRecipe = async () => {
 
 };
 
+const controlList = () => {}
+
+const controlLikes = () => {}
+
 // add event for 'hashchange'
 window.addEventListener('hashchange', controlRecipe);
+
+// add all event listeners which are needed in Recipe UI.
+dom.recipeUI.addEventListener('click', e => {
+  if (e.target.matches('.btn-minus, .btn-minus *')) {
+    state.recipe.updateServings('minus');
+  } else if (e.target.matches('.btn-plus, .btn-plus *')) {
+    state.recipe.updateServings('plus');
+  } else if (e.target.matches('.recipe__btn-add, .recipe__btn-add *')) {
+    controlList();
+  } else if (e.target.matches('.recipe__love, .recipe__love *')) {
+    controlLikes();
+  }
+  recipeView.renderUpdateServings(state.recipe);
+})
