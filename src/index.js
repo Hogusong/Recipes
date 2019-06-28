@@ -1,13 +1,16 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
 import List from './models/List';
+import Likes from './models/Likes';
 import { dom, renderSpinner, clearSpinner  } from './models/base';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
+import * as likesView from './views/likesView';
 
 const state = {
-  perPage: 9
+  perPage: 9,
+  likes: new Likes()
 }
 
 const controlSearch = async () => {
@@ -76,7 +79,7 @@ const controlRecipe = async () => {
       state.recipe.calcServings();
       // render recipe
       clearSpinner();
-      recipeView.renderRecipe(state.recipe);
+      recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
     } catch (err) {
       alert(err);
     }
@@ -94,7 +97,35 @@ const controlList = () => {
   listView.renderShoppingList(state.list.items);
 }
 
-const controlLikes = () => {}
+const controlLikes = () => {
+  const currId = state.recipe.id;
+
+  if (!state.likes.isLiked(currId)) {
+    // add new like to state.likes
+    const newLike = state.likes.addLike({
+          id: currId,
+          title: state.recipe.title,
+          img: state.recipe.img,
+          author: state.recipe.author
+    })
+
+    // toggle the like button
+    likesView.toggleLikeBtn(true);
+
+    // add like to UI
+    if (newLike) likesView.renderLike(newLike);
+  } else {
+    // delete it from state.likes
+    state.likes.deleteLike(currId);
+
+    // toggle the like button
+    likesView.toggleLikeBtn(false);
+
+    // remove it from UI
+    likesView.removeLike(currId)
+  }
+  likesView.toggleLikeMenu(state.likes.getNumLikes());
+}
 
 // add event for 'hashchange'
 window.addEventListener('hashchange', controlRecipe);

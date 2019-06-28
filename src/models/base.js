@@ -7,7 +7,9 @@ export const dom = {
   resultsBrowser: document.querySelector('.results'),
   pagination: document.querySelector('.results__pages'),
   recipeUI: document.querySelector('.recipe'),
-  shoppingList: document.querySelector('.shopping__list')
+  shoppingList: document.querySelector('.shopping__list'),
+  likesList: document.querySelector('.likes__list'),
+  likesField: document.querySelector('.likes__field')
 }
 
 export const renderSpinner = parent => {

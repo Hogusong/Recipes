@@ -6,8 +6,10 @@ export default class Likes {
   addLike(item) {
     const index = this.likes.findIndex(el => el.id === item.id);
     if (index < 0) {
-      this.likes.push(item)
+      this.likes.push(item);
+      return item;
     }
+    return null;
   }
 
   deleteLike(id) {
