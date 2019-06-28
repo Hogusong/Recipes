@@ -159,3 +159,5 @@ dom.shoppingList.addEventListener('click', e => {
     else state.list.updateCount(id, val);
   }
 })
+
+state.likes.likes.forEach(like => likesView.renderLike(like));
