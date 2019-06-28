@@ -1,4 +1,4 @@
-# Recipes & Shopping List Application in Javascript
+# Recipes & Shopping List App.
 
 This application is purely a demo of the Javascript, HTML, and CSS.
 
