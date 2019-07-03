@@ -39,4 +39,4 @@ _Note: See [How to Prevent Permissions Errors](https://docs.npmjs.com/getting-st
 
   <img src="src/img/screen/main screen.png" alt="Main UI">
 
-- To see more images of the app, check out the [screenshots directory](https://github.com/Hogusong/Recipe/src/img/screen)!
+- To see more images of the app, check out the [screenshots directory](https://github.com/Hogusong/Recipes/src/img/screen)!
